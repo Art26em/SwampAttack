@@ -77,14 +77,10 @@ public class Player : MonoBehaviour
     private void ChangeWeapon(Weapon weapon)
     {
         _currentWeapon = weapon;
-        Weapon[] weaponsObjects = weaponPoint.GetComponentsInChildren<Weapon>();
+        Weapon[] weaponsObjects = weaponPoint.GetComponentsInChildren<Weapon>(true);
         foreach (var weaponObject in weaponsObjects)
         {
-            if (weaponObject.Label == _currentWeapon.Label)
-            {
-                continue;
-            }
-            weaponObject.gameObject.SetActive(false);
+            weaponObject.gameObject.SetActive(weaponObject.Label == _currentWeapon.Label);
         }
     }
     
