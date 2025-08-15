@@ -1,6 +1,8 @@
-using System.Collections.Generic;
+using System.Collections.Generic;using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 
@@ -29,12 +31,26 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !IsClickedOnButton() && Time.timeScale != 0)
         {
             _currentWeapon.Shoot(shootPoint);    
         }    
     }
-    
+
+    private bool IsClickedOnButton()
+    {
+        bool result = false;
+        
+        if (EventSystem.current.IsPointerOverGameObject())
+        { 
+            GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
+            if (clickedObject != null && clickedObject.TryGetComponent(out Button _)) result = true;
+        }
+
+        return result;
+    }
+
+
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
