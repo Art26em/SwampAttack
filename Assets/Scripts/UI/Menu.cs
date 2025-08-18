@@ -4,6 +4,7 @@ public class Menu : MonoBehaviour
 {
     public void OpenPanel(GameObject panel)
     {
+        if (Time.timeScale == 0) return;
         panel.SetActive(true);
         Time.timeScale = 0;
     }

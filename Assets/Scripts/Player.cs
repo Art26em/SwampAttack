@@ -74,18 +74,19 @@ public class Player : MonoBehaviour
         weapons.Add(weapon);
         
         Instantiate(weapon, weaponPoint.position, Quaternion.identity, weaponPoint);
-        NextWeapon();
-        
+        NextWeapon(true);
     }
 
-    public void NextWeapon()
+    public void NextWeapon(bool boughtNewWeapon = false)
     {
+        if (Time.timeScale == 0 && !boughtNewWeapon) return;
         _currentWeaponNumber = _currentWeaponNumber == weapons.Count - 1 ? 0 : _currentWeaponNumber + 1;
         ChangeWeapon(weapons[_currentWeaponNumber]);
     }
 
     public void PreviousWeapon()
     {
+        if (Time.timeScale == 0) return;
         _currentWeaponNumber = _currentWeaponNumber == 0 ? weapons.Count - 1 : _currentWeaponNumber - 1;
         ChangeWeapon(weapons[_currentWeaponNumber]);        
     }
