@@ -1,4 +1,4 @@
-using System.Collections.Generic;using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -79,14 +79,12 @@ public class Player : MonoBehaviour
 
     public void NextWeapon(bool boughtNewWeapon = false)
     {
-        if (Time.timeScale == 0 && !boughtNewWeapon) return;
         _currentWeaponNumber = _currentWeaponNumber == weapons.Count - 1 ? 0 : _currentWeaponNumber + 1;
         ChangeWeapon(weapons[_currentWeaponNumber]);
     }
 
     public void PreviousWeapon()
     {
-        if (Time.timeScale == 0) return;
         _currentWeaponNumber = _currentWeaponNumber == 0 ? weapons.Count - 1 : _currentWeaponNumber - 1;
         ChangeWeapon(weapons[_currentWeaponNumber]);        
     }

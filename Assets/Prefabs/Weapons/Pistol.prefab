@@ -49,7 +49,7 @@ MonoBehaviour:
   label: "\u041F\u0438\u0441\u0442\u043E\u043B\u0435\u0442"
   price: 0
   icon: {fileID: 21300000, guid: 3ab43ec2db3cbcb4aa54926ee6132f64, type: 3}
-  isBought: 0
+  isBought: 1
   bullet: {fileID: 780842833621865840, guid: fbc108ac523631445badc9300b5921f2, type: 3}
 --- !u!1 &1283443806820708766
 GameObject:

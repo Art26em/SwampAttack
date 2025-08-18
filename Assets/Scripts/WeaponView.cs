@@ -11,8 +11,12 @@ public class WeaponView : MonoBehaviour
     [SerializeField] private Button sellButton;
 
     private Weapon _weapon;
-    
+    private const string PurchasedLabel = "Purchased";
+
     public event UnityAction<Weapon, WeaponView> OnSellButtonClick;
+    
+    public Weapon Weapon => _weapon;
+    public Button SellButton => sellButton;
     
     private void OnEnable()
     {
@@ -25,12 +29,13 @@ public class WeaponView : MonoBehaviour
         sellButton.onClick.RemoveListener(OnButtonClick);
         sellButton.onClick.RemoveListener(TryLockItem);
     }
-
+    
     private void TryLockItem()
     {
         if (_weapon.IsBought)
         {
             sellButton.interactable = false;
+            price.text = PurchasedLabel;
         }
     }
     
